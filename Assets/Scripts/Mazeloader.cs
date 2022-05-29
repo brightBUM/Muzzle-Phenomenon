@@ -10,12 +10,27 @@ public class Mazeloader : MonoBehaviour
     private float currentime;
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject playerref;
-
-    [SerializeField] Transform bridge_entrypoint;
-    [SerializeField] Transform maze_entrypoint;
-    [SerializeField] Transform maze_exitpoint;
+    [SerializeField] GameObject respawnpoint;
+    public static Mazeloader instance;
+    public Transform bridge_lastpoint;
+    //[SerializeField] Transform maze_entrypoint;
     // Start is called before the first frame update
-    
+
+    private void Awake()
+    {
+        if(instance !=this && instance !=null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            playerref = FindObjectOfType<Movement>().gameObject;
+            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(playerref);
+        }
+        
+    }
     void Start()
     {
         currentime = scenewaitime;
@@ -25,9 +40,21 @@ public class Mazeloader : MonoBehaviour
     {
         //waiting
         yield return new WaitForSeconds(time);
+        bridge_lastpoint = playerref.transform;
+        
         SceneManager.LoadScene("Mazes");
-
+        StartCoroutine(delay());
     }
+    IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1f);
+        respawnpoint = GameObject.FindGameObjectWithTag("Respawn");
+        playerref.gameObject.SetActive(false);
+        playerref.transform.position = respawnpoint.transform.position;
+        playerref.gameObject.SetActive(true);
+    }
+
+
     // Update is called once per frame
     void Update()
     {
