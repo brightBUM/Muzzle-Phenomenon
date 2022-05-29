@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4788266797968621080}
   - component: {fileID: 4788266797968621081}
   - component: {fileID: 4788266797968621085}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,15 +51,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 4788266797968621085}
-  movespeed: 10
+  movespeed: 20
   gravity: -30
   isgrounded: 0
   groundlayer:
     serializedVersion: 2
     m_Bits: 8
   groundpos: {fileID: 4788266799483413874}
-  groundval: 0.1
-  Jumpforce: 8
+  groundval: 0.2
+  Jumpforce: 5
 --- !u!114 &4788266797968621087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4788266798908053999}
   - component: {fileID: 4788266798908053992}
   - component: {fileID: 4788266798908053993}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4788266799483413874}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: grounspos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 4788266799676552548}
   - component: {fileID: 4788266799676552549}
   - component: {fileID: 4788266799676552550}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

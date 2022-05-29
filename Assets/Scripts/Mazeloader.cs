@@ -6,10 +6,12 @@ using TMPro;
 
 public class Mazeloader : MonoBehaviour
 {
-    [SerializeField] const float scenewaitime = 20f;
+    [SerializeField] float scenewaitime = 20f;
     private float currentime;
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] GameObject playerref;
     // Start is called before the first frame update
+    
     void Start()
     {
         currentime = scenewaitime;
@@ -28,4 +30,4 @@ public class Mazeloader : MonoBehaviour
         currentime -= Time.deltaTime;
         timer.text = currentime.ToString();
     }
-}
+}  
