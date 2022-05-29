@@ -10,6 +10,10 @@ public class Mazeloader : MonoBehaviour
     private float currentime;
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] GameObject playerref;
+
+    [SerializeField] Transform bridge_entrypoint;
+    [SerializeField] Transform maze_entrypoint;
+    [SerializeField] Transform maze_exitpoint;
     // Start is called before the first frame update
     
     void Start()
