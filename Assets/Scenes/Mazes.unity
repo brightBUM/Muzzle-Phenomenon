@@ -3368,7 +3368,7 @@ GameObject:
   - component: {fileID: 705218746}
   m_Layer: 0
   m_Name: entry
-  m_TagString: Respawn
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6894,7 +6894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd6fa8aaa39e1a41b350de352845f03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mz: {fileID: 0}
+  _entrypoint: {fileID: 705218746}
 --- !u!1 &1264353195
 GameObject:
   m_ObjectHideFlags: 0

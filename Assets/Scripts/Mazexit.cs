@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Mazexit : MonoBehaviour
 {
-    [SerializeField] Mazeloader mz;
+    [SerializeField] Transform _entrypoint;
+    public static Transform entrypoint;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        mz = FindObjectOfType<Mazeloader>();
+        entrypoint = _entrypoint;
+
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnMazeSceneLoaded;
     }
 
     // Update is called once per frame
@@ -22,8 +28,17 @@ public class Mazexit : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.position =  mz.bridge_lastpoint.position;
             SceneManager.LoadScene("bridge");
+            //other.transform.position =  mz.bridge_lastpoint.position;
         }
+    }
+
+    public void OnMazeSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameManager.instance.SetnewPlayerPos();
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnMazeSceneLoaded;
     }
 }

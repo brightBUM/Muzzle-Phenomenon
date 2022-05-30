@@ -17,7 +17,21 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform groundpos;
     [SerializeField] float groundval = 0.1f;
     [SerializeField] float Jumpforce;
+    public static Movement instance;
 
+    private void Awake()
+    {
+        if (instance != this && instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+    }
     // Start is called before the first frame update
     void Start()
     {
