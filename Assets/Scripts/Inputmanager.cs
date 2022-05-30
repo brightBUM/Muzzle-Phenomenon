@@ -20,6 +20,7 @@ public class Inputmanager : MonoBehaviour
         playercontrol.Land.Ymouse.performed += ctq => mouseval.y = ctq.ReadValue<float>();
         playercontrol.Land.Shoot.performed += _ => shooting.shootbullet();
         
+        
     }
     private void OnEnable()
     {

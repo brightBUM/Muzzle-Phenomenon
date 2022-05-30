@@ -7,6 +7,7 @@ public class Mazexit : MonoBehaviour
 {
     [SerializeField] Transform _entrypoint;
     public static Transform entrypoint;
+    [SerializeField] Animator anim;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,12 +29,18 @@ public class Mazexit : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            GameManager.instance.RestorePlayerPos();
-            SceneManager.LoadScene("bridge");
+            anim.SetTrigger("Fadein");
+            StartCoroutine(transitiondelay(1));
             //other.transform.position =  mz.bridge_lastpoint.position;
         }
     }
+    IEnumerator transitiondelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GameManager.instance.RestorePlayerPos();
+        SceneManager.LoadScene("bridge");
 
+    }
     public void OnMazeSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameManager.instance.SetnewPlayerPos();
