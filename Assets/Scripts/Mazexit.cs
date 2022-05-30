@@ -28,6 +28,7 @@ public class Mazexit : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            GameManager.instance.RestorePlayerPos();
             SceneManager.LoadScene("bridge");
             //other.transform.position =  mz.bridge_lastpoint.position;
         }

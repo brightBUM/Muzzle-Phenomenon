@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
 
     public void RestorePlayerPos()
     {
-        playerref.transform.position = bridge_lastpoint;
+        playerref.gameObject.SetActive(false);
+        playerref.transform.position = bridge_lastpoint+new Vector3(0,5f,0);
+        playerref.gameObject.SetActive(true);
     }
 
     public void SetnewPlayerPos()
@@ -52,23 +54,6 @@ public class GameManager : MonoBehaviour
         playerref.gameObject.SetActive(true);
     }
     
-    //IEnumerator delay()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    respawnpoint = GameObject.FindGameObjectWithTag("Respawn");
-    //    playerref.gameObject.SetActive(false);
-    //    playerref.transform.position = respawnpoint.transform.position;
-    //    playerref.gameObject.SetActive(true);
-    //}
-
-    //void OnSceneLoaded(Scene scene,LoadSceneMode mode)
-    //{
-    //    if(bridge_lastpoint!=Vector3.zero)
-    //    {
-    //        playerref.gameObject.SetActive(false);
-    //        playerref.transform.position = bridge_lastpoint;
-    //        playerref.gameObject.SetActive(true);
-    //    }
-    //}
+    
     
 }  
