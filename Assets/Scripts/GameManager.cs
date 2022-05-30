@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             playerref = FindObjectOfType<Movement>().gameObject;
+            DisableTrail();
             DontDestroyOnLoad(this.gameObject);
         }
 
@@ -45,6 +46,15 @@ public class GameManager : MonoBehaviour
         playerref.gameObject.SetActive(false);
         playerref.transform.position = bridge_lastpoint+new Vector3(0,5f,0);
         playerref.gameObject.SetActive(true);
+    }
+
+    public void EnableTrail()
+    {
+        playerref.GetComponent<TrailRenderer>().enabled = true;
+    }
+    public void DisableTrail()
+    {
+        playerref.GetComponent<TrailRenderer>().enabled = false;
     }
 
     public void SetnewPlayerPos()

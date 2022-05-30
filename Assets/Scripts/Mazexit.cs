@@ -38,11 +38,13 @@ public class Mazexit : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         GameManager.instance.RestorePlayerPos();
+        GameManager.instance.DisableTrail();
         SceneManager.LoadScene("bridge");
 
     }
     public void OnMazeSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        GameManager.instance.EnableTrail();
         GameManager.instance.SetnewPlayerPos();
     }
     private void OnDisable()
