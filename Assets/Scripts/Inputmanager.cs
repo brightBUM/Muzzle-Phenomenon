@@ -7,6 +7,7 @@ public class Inputmanager : MonoBehaviour
     [SerializeField] Movement movement;
     [SerializeField] mouselook mouselook;
     [SerializeField] shooting shooting;
+    [SerializeField] Combat combat;
     PlayerControls playercontrol;
     Vector2 move;
     Vector2 mouseval;
@@ -19,6 +20,8 @@ public class Inputmanager : MonoBehaviour
         playercontrol.Land.Xmouse.performed += ctq => mouseval.x = ctq.ReadValue<float>();
         playercontrol.Land.Ymouse.performed += ctq => mouseval.y = ctq.ReadValue<float>();
         playercontrol.Land.Shoot.performed += _ => shooting.shootbullet();
+        playercontrol.Land.Punch.performed += _ => combat.punch();
+        playercontrol.Land.Kick.performed += _ => combat.kick();
         
         
     }

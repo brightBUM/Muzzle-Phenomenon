@@ -11,7 +11,8 @@
                     "id": "57a63f01-1fb3-4735-a85f-777265c6b135",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "5e4e11a0-74f7-49e6-9594-cb0c3ddabf4b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Shoot",
@@ -27,7 +29,8 @@
                     "id": "b77b91da-c245-4384-95c0-b1c7e2b77663",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Xmouse",
@@ -35,7 +38,8 @@
                     "id": "17015256-02fc-486c-bdd8-b07d7a2f9d84",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Ymouse",
@@ -43,15 +47,26 @@
                     "id": "bd485e7f-8407-4e23-94be-e47092a7b4f7",
                     "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "shoot1",
+                    "name": "Kick",
                     "type": "Button",
                     "id": "3b0edd8d-18ff-4733-a612-be6ed5f47e36",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "770767a1-7ac4-4432-9da3-0c78bccf7013",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,7 +139,7 @@
                 {
                     "name": "",
                     "id": "b998bd84-b574-48ca-a403-1413018db045",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -157,11 +172,22 @@
                 {
                     "name": "",
                     "id": "d8c11d50-bdf1-488d-9ca0-32d3e5de06fd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4a1a225-5f72-4190-b104-fde60e162847",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "shoot1",
+                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

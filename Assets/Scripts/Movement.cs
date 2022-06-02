@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform groundpos;
     [SerializeField] float groundval = 0.1f;
     [SerializeField] float Jumpforce;
+    //[SerializeField] Animator anim;
     public static Movement instance;
 
     private void Awake()
@@ -52,6 +53,15 @@ public class Movement : MonoBehaviour
             jump = false;
         }
         Verticalinput.y += gravity * Time.deltaTime;
+        //if (move != Vector2.zero)
+        //{
+        //    anim.SetBool("move", true);
+        //}
+        //else
+        //{
+        //    anim.SetBool("move", false);
+
+        //}
         horizontalinput = transform.right * move.x + transform.forward * move.y;
         control.Move(horizontalinput*movespeed*Time.deltaTime);
         control.Move(Verticalinput * Time.deltaTime);
