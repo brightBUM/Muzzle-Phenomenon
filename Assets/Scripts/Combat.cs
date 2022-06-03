@@ -11,12 +11,12 @@ public class Combat : MonoBehaviour,Idamagable
     [SerializeField] private float currentHealth;
     [SerializeField] float attackCoolDownTime = 2f;
     [SerializeField] Animator anim;
-    [SerializeField] Enemy enemyinrange;
     [SerializeField] Slider healthBar;
     [SerializeField] GameObject deathCanvas;
-    float timer;
     [SerializeField] bool pressed = false;    
+    [SerializeField] public List<Enemy> enemiesinRange;
     // Start is called before the first frame update
+    //float timer;
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,7 +39,11 @@ public class Combat : MonoBehaviour,Idamagable
         {
             StartCoroutine(Timebetattacks());
             anim.SetTrigger("punch");
-            enemyinrange?.damage(punchDamage);
+            foreach(Enemy enmy in enemiesinRange)
+            {
+                enmy?.damage(punchDamage);
+            }
+            
         }
         
     }
@@ -51,22 +55,30 @@ public class Combat : MonoBehaviour,Idamagable
     }
     public void kick()
     {
-        //anim.SetTrigger("kick");
-        enemyinrange?.damage(kickDamage);
+        if (!pressed)
+        {
+            StartCoroutine(Timebetattacks());
+            anim.SetTrigger("punch");
+            foreach (Enemy enmy in enemiesinRange)
+            {
+                enmy?.damage(kickDamage);
+            }
+
+        }
 
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<Enemy>(out Enemy en))
         {
-            enemyinrange = en;
+            enemiesinRange.Add(en);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.GetComponent<Enemy>())
+        if(other.TryGetComponent<Enemy>(out Enemy en))
         {
-            enemyinrange = null;
+            enemiesinRange.Remove(en) ;
         }
     }
     public void damage(float amount)

@@ -27,11 +27,6 @@ public class Enemy : MonoBehaviour,Idamagable
         currentHealth = maxHealth;
         healthbar.maxValue = maxHealth;
     }
-    public void damage(float amount)
-    {
-        currentHealth -= amount;
-        //rb = GetComponent<Rigidbody>();
-    }
     //public enum EnemyState
     //{
     //    IDLE,
@@ -46,13 +41,27 @@ public class Enemy : MonoBehaviour,Idamagable
     // Update is called once per frame
     void Update()
     {
-        healthbar.value = Mathf.Lerp(healthbar.value,currentHealth,Time.deltaTime*barspeed);
-        if(currentHealth<=0)
+        HealthCondition();
+        StateCheck();
+    }
+
+    public void damage(float amount)
+    {
+        currentHealth -= amount;
+        //rb = GetComponent<Rigidbody>();
+    }
+    private void HealthCondition()
+    {
+        healthbar.value = Mathf.Lerp(healthbar.value, currentHealth, Time.deltaTime * barspeed);
+        if (currentHealth <= 0)
         {
             die();
         }
+    }
 
-        if(playeRef!=null)
+    private void StateCheck()
+    {
+        if (playeRef != null)
         {
             distance = Vector3.Distance(transform.position, playeRef.transform.position);
             if (distance > attackdistance)
@@ -61,21 +70,30 @@ public class Enemy : MonoBehaviour,Idamagable
             }
             else
             {
-                if(!attacking)
+                if (!attacking)
                 {
                     StartCoroutine(Attacking());
                 }
-                
+
             }
         }
-        
     }
-    void ChasePlayer()
+    float speedref;
+    public void ChasePlayer()
     {
-        agent.SetDestination(playeRef.transform.position);
+        agent.speed = speedref;
+        if(playeRef!=null)
+        {
+            agent.SetDestination(playeRef.transform.position);
+        }
 
     }
-    void AttackPlayer()
+    public void Idlestate()
+    {
+        speedref = agent.speed;
+        agent.speed = 0f;
+    }
+    public void AttackPlayer()
     {
 
         playeRef.damage(enemyDamage);
@@ -90,6 +108,7 @@ public class Enemy : MonoBehaviour,Idamagable
     }
     public void die()
     {
+        Movement.instance.GetComponent<Combat>().enemiesinRange.Remove(this);
         Destroy(this.gameObject, 0.5f);
     }
 
