@@ -89,6 +89,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b61f988-9c36-4d9e-8925-5ac64bd67a16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Charge"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdb37c76-108c-4c6d-8cf6-8de3f0454a98"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +230,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81fae565-3d3d-4c40-82d5-9ee466c77e7f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99b34686-0060-465b-bc43-3c7e431cc127"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Charge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +267,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Land_Ymouse = m_Land.FindAction("Ymouse", throwIfNotFound: true);
         m_Land_Kick = m_Land.FindAction("Kick", throwIfNotFound: true);
         m_Land_Punch = m_Land.FindAction("Punch", throwIfNotFound: true);
+        m_Land_Dash = m_Land.FindAction("Dash", throwIfNotFound: true);
+        m_Land_Charge = m_Land.FindAction("Charge", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +335,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_Ymouse;
     private readonly InputAction m_Land_Kick;
     private readonly InputAction m_Land_Punch;
+    private readonly InputAction m_Land_Dash;
+    private readonly InputAction m_Land_Charge;
     public struct LandActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +348,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Ymouse => m_Wrapper.m_Land_Ymouse;
         public InputAction @Kick => m_Wrapper.m_Land_Kick;
         public InputAction @Punch => m_Wrapper.m_Land_Punch;
+        public InputAction @Dash => m_Wrapper.m_Land_Dash;
+        public InputAction @Charge => m_Wrapper.m_Land_Charge;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +380,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Punch.started -= m_Wrapper.m_LandActionsCallbackInterface.OnPunch;
                 @Punch.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnPunch;
                 @Punch.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnPunch;
+                @Dash.started -= m_Wrapper.m_LandActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnDash;
+                @Charge.started -= m_Wrapper.m_LandActionsCallbackInterface.OnCharge;
+                @Charge.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnCharge;
+                @Charge.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnCharge;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +411,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @Charge.started += instance.OnCharge;
+                @Charge.performed += instance.OnCharge;
+                @Charge.canceled += instance.OnCharge;
             }
         }
     }
@@ -372,5 +430,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnYmouse(InputAction.CallbackContext context);
         void OnKick(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnCharge(InputAction.CallbackContext context);
     }
 }

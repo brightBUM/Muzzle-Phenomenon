@@ -42,6 +42,7 @@ public class Combat : MonoBehaviour,Idamagable
             foreach(Enemy enmy in enemiesinRange)
             {
                 enmy?.damage(punchDamage);
+                
             }
             
         }

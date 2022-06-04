@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour,Idamagable
     public bool attacking = false;
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        healthbar = GetComponentInChildren<Slider>();
         playeRef = Movement.instance.GetComponent<Combat>();
         //enemystate = EnemyState.IDLE;
         currentHealth = maxHealth;
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour,Idamagable
     private void HealthCondition()
     {
         healthbar.value = Mathf.Lerp(healthbar.value, currentHealth, Time.deltaTime * barspeed);
-        if (currentHealth <= 0)
+        if (healthbar.value <= 0)
         {
             die();
         }
