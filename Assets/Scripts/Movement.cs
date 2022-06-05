@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform groundpos;
     [SerializeField] float groundval = 0.1f;
     [SerializeField] float Jumpforce;
-    //[SerializeField] Animator anim;
+    [SerializeField] Animator anim;
     public static Movement instance;
     [SerializeField] float dashSpeed;
 
@@ -62,6 +62,7 @@ public class Movement : MonoBehaviour
     {
         if (move != Vector2.zero && Input.GetKeyDown(KeyCode.X))
         {
+            anim.SetTrigger("dash");
             if (move.x > 0)
             {
                 Debug.Log("right dash");
