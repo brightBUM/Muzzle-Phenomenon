@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float Jumpforce;
     //[SerializeField] Animator anim;
     public static Movement instance;
+    [SerializeField] float dashSpeed;
 
     private void Awake()
     {
@@ -39,33 +40,66 @@ public class Movement : MonoBehaviour
         
     }
 
+   
     // Update is called once per frame
     void Update()
     {
+        
+        GrounCheck();
+
+        Movementcc();
+    }
+
+    private void Movementcc()
+    {
+        DashCheck();
+        horizontalinput = transform.right * move.x + transform.forward * move.y;
+        control.Move(horizontalinput * movespeed * Time.deltaTime);
+        control.Move(Verticalinput * Time.deltaTime);
+    }
+
+    private void DashCheck()
+    {
+        if (move != Vector2.zero && Input.GetKeyDown(KeyCode.X))
+        {
+            if (move.x > 0)
+            {
+                Debug.Log("right dash");
+                control.Move(transform.right /** Time.deltaTime */* dashSpeed);
+            }
+            else if (move.x < 0)
+            {
+                Debug.Log("left dash");
+                control.Move(-transform.right /** Time.deltaTime */* dashSpeed);
+            }
+            else if (move.y > 0)
+            {
+                Debug.Log("Forward dash");
+                control.Move(transform.forward/* * Time.deltaTime*/ * dashSpeed);
+            }
+            else if (move.y < 0)
+            {
+                Debug.Log("back dash");
+                control.Move(-transform.forward /** Time.deltaTime */* dashSpeed);
+            }
+        }
+    }
+
+    private void GrounCheck()
+    {
         isgrounded = Physics.CheckSphere(transform.position, groundval, groundlayer);
-        if(isgrounded)
+        if (isgrounded)
         {
             Verticalinput.y = 0;
         }
-        if(isgrounded && jump)
+        if (isgrounded && jump)
         {
             Verticalinput.y = Mathf.Sqrt(-2 * gravity * Jumpforce);
             jump = false;
         }
         Verticalinput.y += gravity * Time.deltaTime;
-        //if (move != Vector2.zero)
-        //{
-        //    anim.SetBool("move", true);
-        //}
-        //else
-        //{
-        //    anim.SetBool("move", false);
-
-        //}
-        horizontalinput = transform.right * move.x + transform.forward * move.y;
-        control.Move(horizontalinput*movespeed*Time.deltaTime);
-        control.Move(Verticalinput * Time.deltaTime);
     }
+
     public void receiveinput(Vector2 move)
     {
         this.move = move;

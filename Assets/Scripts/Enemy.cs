@@ -49,8 +49,15 @@ public class Enemy : MonoBehaviour,Idamagable
 
     public void damage(float amount)
     {
+
         currentHealth -= amount;
         //rb = GetComponent<Rigidbody>();
+    }
+
+    public IEnumerator DamageWithDelay(float amount,float time)
+    {
+        yield return new WaitForSeconds(time);
+        currentHealth -= amount;
     }
     private void HealthCondition()
     {

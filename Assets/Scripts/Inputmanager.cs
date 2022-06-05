@@ -22,6 +22,7 @@ public class Inputmanager : MonoBehaviour
         playercontrol.Land.Shoot.performed += _ => shooting.shootbullet();
         playercontrol.Land.Punch.performed += _ => combat.punch();
         playercontrol.Land.Kick.performed += _ => combat.kick();
+        //playercontrol.Land.Dash.performed += _ => movement.Dash();
         
         
     }

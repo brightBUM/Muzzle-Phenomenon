@@ -41,8 +41,8 @@ public class Combat : MonoBehaviour,Idamagable
             anim.SetTrigger("punch");
             foreach(Enemy enmy in enemiesinRange)
             {
-                enmy?.damage(punchDamage);
-                
+                //StartCoroutine(enmy.DamageWithDelay(punchDamage, 1.2f));
+                enmy.damage(punchDamage);
             }
             
         }
