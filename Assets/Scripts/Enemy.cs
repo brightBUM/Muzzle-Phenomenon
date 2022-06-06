@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour,Idamagable
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        speedref = agent.speed;
         healthbar = GetComponentInChildren<Slider>();
         playeRef = Movement.instance.GetComponent<Combat>();
         //enemystate = EnemyState.IDLE;
@@ -97,11 +98,11 @@ public class Enemy : MonoBehaviour,Idamagable
         }
 
     }
-    public void Idlestate()
-    {
-        speedref = agent.speed;
-        agent.speed = 0f;
-    }
+    //public void Idlestate()
+    //{
+    //    speedref = agent.speed;
+    //    agent.speed = 0f;
+    //}
     public void AttackPlayer()
     {
 
