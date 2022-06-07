@@ -68,19 +68,13 @@ public class Combat : MonoBehaviour,Idamagable
         }
 
     }
-    private void OnTriggerEnter(Collider other)
+    public void AddEnemiesToList(Enemy en)
     {
-        if(other.TryGetComponent<Enemy>(out Enemy en))
-        {
-            enemiesinRange.Add(en);
-        }
+        enemiesinRange.Add(en);
     }
-    private void OnTriggerExit(Collider other)
+    public void RemoveEnemiesFromList(Enemy en)
     {
-        if(other.TryGetComponent<Enemy>(out Enemy en))
-        {
-            enemiesinRange.Remove(en) ;
-        }
+        enemiesinRange.Remove(en);
     }
     public void damage(float amount)
     {
