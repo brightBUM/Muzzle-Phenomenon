@@ -14,6 +14,7 @@ public class EnemyRange : MonoBehaviour
     {
         if (other.TryGetComponent<Combat>(out Combat cm))
         {
+            playerRef = cm;
             enemy.SetPlayerRef(cm);
         }
     }
@@ -21,6 +22,7 @@ public class EnemyRange : MonoBehaviour
     {
         if (other.GetComponent<Combat>())
         {
+            playerRef = null;
             enemy.RemovePlayerRef();
         }
     }

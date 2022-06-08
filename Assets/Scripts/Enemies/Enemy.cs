@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour,Idamagable
     public float maxHealth = 100f;
     [SerializeField] private float currentHealth;
     [SerializeField] float enemySpeed = 4f;
-
     [SerializeField] float patrolDistance = 4f;
 
     [Header("Attack Stats")]
@@ -19,10 +18,10 @@ public class Enemy : MonoBehaviour,Idamagable
     [SerializeField] float timebwAttacks = 3f;
     [SerializeField] float attackdistance =2f;
     [SerializeField] float distance;
-    [SerializeField] Slider healthbar;
-    [SerializeField] Combat playeRef;
+    [SerializeField] protected Slider healthbar;
+    [SerializeField] protected Combat playeRef;
     //[SerializeField] Rigidbody rb;
-    [SerializeField] NavMeshAgent agent;
+    [SerializeField] protected NavMeshAgent agent;
     Vector3 startpoint;
     public Vector3 newpoint;
     float stoppingdistanceref;
@@ -111,11 +110,13 @@ public class Enemy : MonoBehaviour,Idamagable
     {
         this.playeRef = cm;
         enemystate = EnemyState.CHASING;
+        Debug.Log("player in range");
     }
     public void RemovePlayerRef()
     {
         this.playeRef = null;
         enemystate = EnemyState.PATROLLING;
+        Debug.Log("player exited");
     }
     public IEnumerator DamageWithDelay(float amount,float time)
     {

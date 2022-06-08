@@ -5,19 +5,4 @@ using UnityEngine;
 public class Goblin : Enemy
 {
 
-    public Goblin()
-    {
-        
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
