@@ -35,19 +35,18 @@ public class GameManager : MonoBehaviour
     {
        
     }
-    
+   
+
     public void StorePlayerPos()
     {
         bridge_lastpoint = playerref.transform.position;
     }
-
     public void RestorePlayerPos()
     {
         playerref.gameObject.SetActive(false);
         playerref.transform.position = bridge_lastpoint+new Vector3(0,5f,0);
         playerref.gameObject.SetActive(true);
     }
-
     public void EnableTrail()
     {
         playerref.GetComponent<TrailRenderer>().enabled = true;
@@ -56,7 +55,6 @@ public class GameManager : MonoBehaviour
     {
         playerref.GetComponent<TrailRenderer>().enabled = false;
     }
-
     public void SetnewPlayerPos()
     {
         playerref.gameObject.SetActive(false);

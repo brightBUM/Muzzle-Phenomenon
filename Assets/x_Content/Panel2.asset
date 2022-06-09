@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51587e3b227cde843b465ad1289898c3, type: 3}
   m_Name: Panel2
   m_EditorClassIdentifier: 
-  panelImage: {fileID: 21300000, guid: 9aa6bcd9a6af6084f8a897d397c51458, type: 3}
-  panelDialogue: the trouble is.. we've tested it on subject who haven't given us
-    their consent.
+  panelImage: {fileID: 21300000, guid: 59d4f04ff874c0b4b98a27f7ce85dc87, type: 3}
+  panelDialogue: human trials are not going according to plan..

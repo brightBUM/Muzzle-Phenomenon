@@ -492,9 +492,9 @@ GameObject:
   - component: {fileID: 4237522187095778049}
   - component: {fileID: 4237522187095778048}
   - component: {fileID: 4237522187095778051}
-  - component: {fileID: 4237522187095778063}
   - component: {fileID: 4237522187095778060}
   - component: {fileID: 792078523}
+  - component: {fileID: 1996231088}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -584,30 +584,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4237522187095778063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237522187095778050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44e5e126f2b8314baa323e34b3a9d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 35
-  currentHealth: 0
-  enemySpeed: 6
-  barspeed: 3
-  timebwAttacks: 0.5
-  attackdistance: 0.75
-  enemyDamage: 3
-  distance: 0
-  healthbar: {fileID: 0}
-  playeRef: {fileID: 0}
-  agent: {fileID: 792078523}
-  attacking: 0
 --- !u!54 &4237522187095778060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -638,7 +614,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -646,6 +622,33 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1996231088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237522187095778050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49df10210f5ee8a448f8c0e81f8e32f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 35
+  currentHealth: 0
+  enemySpeed: 6
+  patrolDistance: 4
+  enemyDamage: 20
+  barspeed: 3
+  timebwAttacks: 2
+  attackdistance: 3
+  distance: 0
+  healthbar: {fileID: 0}
+  playeRef: {fileID: 0}
+  agent: {fileID: 0}
+  newpoint: {x: 0, y: 0, z: 0}
+  attacking: 0
+  enemystate: 0
 --- !u!1 &4237522187280674834
 GameObject:
   m_ObjectHideFlags: 0

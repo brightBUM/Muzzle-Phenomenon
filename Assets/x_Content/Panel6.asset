@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Panel6
   m_EditorClassIdentifier: 
   panelImage: {fileID: 21300000, guid: 291fffc463a2cc44780f5dd5173b9431, type: 3}
-  panelDialogue: human trials are not going according to plan..
+  panelDialogue: Fiorentina is dealing with one such.. erm.. 'volunteer' as we speak..
+    hopefully things end up in our favor

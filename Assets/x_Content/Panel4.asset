@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Panel4
   m_EditorClassIdentifier: 
   panelImage: {fileID: 21300000, guid: d9178b066a285ee439ce9533c48367ab, type: 3}
-  panelDialogue: many of them displayed fear and anxiety
+  panelDialogue: 

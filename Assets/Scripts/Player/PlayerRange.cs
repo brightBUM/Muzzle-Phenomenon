@@ -14,17 +14,33 @@ public class PlayerRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy en))
+
+            Debug.Log("entered");
+        //other.TryGetComponent<Enemy>(out Enemy en)
+        //if (other.gameObject.CompareTag("Enemy"))
+        //{
+        //    var en = other.GetComponent<Goblin>();
+        //    parent.AddEnemiesToList(en);
+        //}
+        if (other.TryGetComponent<Goblin>(out Goblin en))
         {
             parent.AddEnemiesToList(en);
+
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy en))
+        if (other.TryGetComponent<Goblin>(out Goblin en))
         {
             parent.RemoveEnemiesFromList(en);
-            
+
         }
+        //    Debug.Log("exited");
+        //if (other.gameObject.CompareTag("Enemy"))
+        //{
+        //    var en = other.GetComponent<Goblin>();
+        //    parent.RemoveEnemiesFromList(en);
+        //}
     }
 }

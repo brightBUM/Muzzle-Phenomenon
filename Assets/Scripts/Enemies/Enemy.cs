@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour,Idamagable
     public Vector3 newpoint;
     float stoppingdistanceref;
     public bool attacking = false;
-    void Start()
+    public virtual void Start()
     {
         startpoint = transform.position;
         newpoint = GetNewPoint();
@@ -110,13 +110,11 @@ public class Enemy : MonoBehaviour,Idamagable
     {
         this.playeRef = cm;
         enemystate = EnemyState.CHASING;
-        Debug.Log("player in range");
     }
     public void RemovePlayerRef()
     {
         this.playeRef = null;
         enemystate = EnemyState.PATROLLING;
-        Debug.Log("player exited");
     }
     public IEnumerator DamageWithDelay(float amount,float time)
     {
