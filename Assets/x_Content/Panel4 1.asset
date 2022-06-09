@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51587e3b227cde843b465ad1289898c3, type: 3}
   m_Name: Panel4 1
   m_EditorClassIdentifier: 
-  panelImage: {fileID: 21300000, guid: 150c1d17ec1487d448ee07d9371d2f47, type: 3}
-  panelDialogue: the volunteers  are experiencing side effects - hallucinations
+  panelImage: {fileID: 21300000, guid: 4ce87f021470ce743810549285f51a86, type: 3}
+  panelDialogue: 
