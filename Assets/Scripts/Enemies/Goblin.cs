@@ -7,6 +7,5 @@ public class Goblin : Enemy
     public override void Start()
     {
         base.Start();
-        Debug.Log("mesda");
     }
 }

@@ -13,8 +13,10 @@ public class PerceptionSpawner : MonoBehaviour
     //[SerializeField] List<GameObject> enemyPrefabs;
     [SerializeField] GameObject goblinPrefab;
     [SerializeField] List<GameObject> enemiesToSpawn;
+    [Header("GoblinSpawnstats")]
     [SerializeField] float goblinSpawnDistance;
     [SerializeField] float goblinSpawnTime;
+    [SerializeField] float goblinCount;
     //[SerializeField] Movement playerRef;
     bool spawning = false;
     float meterval;
@@ -52,7 +54,7 @@ public class PerceptionSpawner : MonoBehaviour
     }
     public void SpawnGoblins()
     {
-        var goblinref = Instantiate(goblinPrefab, Movement.instance.transform.position + new Vector3(0, 0, goblinSpawnDistance), 
+        var goblinref = Instantiate(goblinPrefab, Movement.instance.transform.position + new Vector3(Random.Range(-18,18), 0, Random.Range(6,goblinSpawnDistance)), 
             Quaternion.identity,this.gameObject.transform);
         
     }

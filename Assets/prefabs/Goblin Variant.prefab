@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 773348389, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1996231088, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: enemyDamage
       value: 5
@@ -22,6 +26,10 @@ PrefabInstance:
     - target: {fileID: 4237522187095778050, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237522187095778050, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4237522187095778050, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_TagString

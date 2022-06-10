@@ -13,9 +13,9 @@ TagManager:
   - Water
   - UI
   - Player
-  - Range
-  - 
-  - 
+  - PRange
+  - ERange
+  - Enemy
   - 
   - 
   - 
