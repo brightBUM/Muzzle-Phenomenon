@@ -11,11 +11,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform respawnpoint;
     public static GameManager instance;
     public static Vector3 bridge_lastpoint;
+    [SerializeField] GameState gameState;
+    [Range(0,1)]
+    [SerializeField] public float difficulty;
     //[SerializeField] Transform maze_entrypoint;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        gameState.playCount++;
         if(instance !=this && instance !=null)
         {
             Destroy(this.gameObject);
