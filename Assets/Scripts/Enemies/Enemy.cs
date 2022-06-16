@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.AI;
 
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour,Idamagable
     [SerializeField] float timebwAttacks = 3f;
     [SerializeField] float attackdistance =2f;
     [SerializeField] float distance;
+    [SerializeField] Animator anim;
     [SerializeField] protected Slider healthbar;
     [SerializeField] protected Combat playeRef;
     //[SerializeField] Rigidbody rb;
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour,Idamagable
     public Vector3 newpoint;
     float stoppingdistanceref;
     public bool attacking = false;
+  
     public virtual void Start()
     {
         startpoint = transform.position;
@@ -38,6 +41,7 @@ public class Enemy : MonoBehaviour,Idamagable
         stoppingdistanceref = agent.stoppingDistance;
 
         healthbar = GetComponentInChildren<Slider>();
+        anim = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
         healthbar.maxValue = maxHealth;
     }
@@ -74,7 +78,7 @@ public class Enemy : MonoBehaviour,Idamagable
         agent.stoppingDistance = 0f;
         if(playeRef ==null)
         {
-            var distance = Vector3.Distance(transform.position, newpoint);
+            distance = Vector3.Distance(transform.position, newpoint);
             if (distance>=0.1f)
             {
                 agent.SetDestination(newpoint);
@@ -109,11 +113,13 @@ public class Enemy : MonoBehaviour,Idamagable
     public void SetPlayerRef(Combat cm)
     {
         this.playeRef = cm;
+        anim.SetBool("chase",true);
         enemystate = EnemyState.CHASING;
     }
     public void RemovePlayerRef()
     {
         this.playeRef = null;
+        anim.SetBool("chase",false);
         enemystate = EnemyState.PATROLLING;
     }
     public IEnumerator DamageWithDelay(float amount,float time)
@@ -176,6 +182,7 @@ public class Enemy : MonoBehaviour,Idamagable
     IEnumerator Attacking()
     {
         attacking = true;
+        anim.SetTrigger("attack");
         playeRef.damage(enemyDamage);
         yield return new WaitForSeconds(timebwAttacks);
         attacking = false;
@@ -183,8 +190,9 @@ public class Enemy : MonoBehaviour,Idamagable
     }
     public void die()
     {
-        Movement.instance.GetComponent<Combat>().enemiesinRange.Remove(this);
+        Movement.instance.GetComponent<Combat>().RemoveEnemiesFromList(this);
         Destroy(this.gameObject, 0.5f);
+       
     }
 }
 

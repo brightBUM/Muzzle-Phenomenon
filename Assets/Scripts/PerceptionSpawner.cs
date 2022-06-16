@@ -11,9 +11,10 @@ public class PerceptionSpawner : MonoBehaviour
     [SerializeField] float meterDecRate = 0.5f;
     [SerializeField] TextMeshProUGUI percentage;
     //[SerializeField] List<GameObject> enemyPrefabs;
-    [SerializeField] GameObject goblinPrefab;
+    [SerializeField] int totalEnemyCount;
     [SerializeField] List<GameObject> enemiesToSpawn;
     [Header("GoblinSpawnstats")]
+    [SerializeField] GameObject goblinPrefab;
     [SerializeField] float goblinSpawnDistanceNear;
     [SerializeField] float goblinSpawnDistanceFar;
     [SerializeField] float goblinSpawnTime;
@@ -32,6 +33,7 @@ public class PerceptionSpawner : MonoBehaviour
     {
         meterval = perceptionMeter.value;
         // 70 60 50 40 30
+        
         UpdaterMeter();
         if(meterval<70 && !spawning)
         {
@@ -57,6 +59,7 @@ public class PerceptionSpawner : MonoBehaviour
     {
         var goblinref = Instantiate(goblinPrefab, Movement.instance.transform.position + new Vector3(Random.Range(-18,18), 0, Random.Range(6,goblinSpawnDistanceFar)), 
             Quaternion.identity,this.gameObject.transform);
+        enemiesToSpawn.Add(goblinref);
         
     }
 
