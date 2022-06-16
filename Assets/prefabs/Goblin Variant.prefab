@@ -104,13 +104,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4237522186968062607, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.826
+      objectReference: {fileID: 0}
     - target: {fileID: 4237522187095778048, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4237522187095778050, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_Name
-      value: Goblin
+      value: Goblin Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4237522187095778050, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_Layer

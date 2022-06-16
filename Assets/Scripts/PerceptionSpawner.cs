@@ -15,8 +15,8 @@ public class PerceptionSpawner : MonoBehaviour
     [SerializeField] List<GameObject> enemiesToSpawn;
     [Header("GoblinSpawnstats")]
     [SerializeField] GameObject goblinPrefab;
-    [SerializeField] float goblinSpawnDistanceNear;
-    [SerializeField] float goblinSpawnDistanceFar;
+    [SerializeField] float goblinSpawnDistance;
+    //[SerializeField] float goblinSpawnDistanceFar;
     [SerializeField] float goblinSpawnTime;
     [SerializeField] float goblinCount;
     //[SerializeField] Movement playerRef;
@@ -26,6 +26,7 @@ public class PerceptionSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        perceptionMeter.value = 30f;
     }
 
     // Update is called once per frame
@@ -57,7 +58,7 @@ public class PerceptionSpawner : MonoBehaviour
     }
     public void SpawnGoblins()
     {
-        var goblinref = Instantiate(goblinPrefab, Movement.instance.transform.position + new Vector3(Random.Range(-18,18), 0, Random.Range(6,goblinSpawnDistanceFar)), 
+        var goblinref = Instantiate(goblinPrefab, Movement.instance.transform.position + new Vector3(Random.Range(-18,18), -4.71f, Random.Range(6,goblinSpawnDistance)), 
             Quaternion.identity,this.gameObject.transform);
         enemiesToSpawn.Add(goblinref);
         
