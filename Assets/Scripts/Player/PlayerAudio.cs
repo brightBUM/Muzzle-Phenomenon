@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip armSwingClip;
+    [SerializeField] AudioClip punchClip;
     //[SerializeField] AudioClip[] punchClips;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,17 @@ public class PlayerAudio : MonoBehaviour
 
     public void PunchSfx()
     {
-        if(!audioSource.isPlaying)
+        audioSource.clip = punchClip;
+        PlaySource();
+    }
+    public void ArmSwing()
+    {
+        audioSource.clip = armSwingClip;
+        PlaySource();
+    }
+    void PlaySource()
+    {
+        if (!audioSource.isPlaying)
         {
             audioSource.Play();
         }

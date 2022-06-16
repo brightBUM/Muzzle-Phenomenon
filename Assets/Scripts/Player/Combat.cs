@@ -42,11 +42,20 @@ public class Combat : MonoBehaviour,Idamagable
             StartCoroutine(Timebetattacks());
             playerAudio.PunchSfx();
             anim.SetTrigger("punch");
-            foreach(Enemy enmy in enemiesinRange)
+            if(enemiesinRange.Count>0)
             {
-                //StartCoroutine(enmy.DamageWithDelay(punchDamage, 1.2f));
-                enmy.damage(punchDamage);
+                playerAudio.PunchSfx();
+                foreach (Enemy enmy in enemiesinRange)
+                {
+                    //StartCoroutine(enmy.DamageWithDelay(punchDamage, 1.2f));
+                    enmy.damage(punchDamage);
+                }
             }
+            else
+            {
+                playerAudio.ArmSwing();
+            }
+            
             
         }
         

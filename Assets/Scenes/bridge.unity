@@ -1206,6 +1206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 696301844}
+  armSwingClip: {fileID: 8300000, guid: 6fa797df174721948ae4155a40cfcb39, type: 3}
+  punchClip: {fileID: 8300000, guid: 7d8a25c044e2e284d8c343241a91a1ae, type: 3}
 --- !u!82 &696301844 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 696301837, guid: d08a7d28d2a03954abc5509c5b2ec5be, type: 3}
