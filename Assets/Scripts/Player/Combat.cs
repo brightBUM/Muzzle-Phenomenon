@@ -13,12 +13,14 @@ public class Combat : MonoBehaviour,Idamagable
     [SerializeField] Animator anim;
     [SerializeField] Slider healthBar;
     [SerializeField] GameObject deathCanvas;
+    [SerializeField] PlayerAudio playerAudio;
     [SerializeField] bool pressed = false;    
     [SerializeField] public List<Enemy> enemiesinRange;
     // Start is called before the first frame update
     //float timer;
     void Start()
     {
+        playerAudio = GetComponent<PlayerAudio>();
         currentHealth = maxHealth;
         healthBar.maxValue = currentHealth;
     }
@@ -38,6 +40,7 @@ public class Combat : MonoBehaviour,Idamagable
         if(!pressed)
         {
             StartCoroutine(Timebetattacks());
+            playerAudio.PunchSfx();
             anim.SetTrigger("punch");
             foreach(Enemy enmy in enemiesinRange)
             {

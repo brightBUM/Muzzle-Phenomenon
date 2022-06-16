@@ -22,7 +22,22 @@ public class PerceptionSpawner : MonoBehaviour
     //[SerializeField] Movement playerRef;
     bool spawning = false;
     float meterval;
+    public static PerceptionSpawner instance;
+    private void Awake()
+    {
+        if (instance != this && instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
 
+        //SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +82,11 @@ public class PerceptionSpawner : MonoBehaviour
     void SpawnJuggernaut()
     {
 
+    }
+
+    public void IncreasePerMeter(float amount)
+    {
+        perceptionMeter.value += 5f;
     }
 
 }

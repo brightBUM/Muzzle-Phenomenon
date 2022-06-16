@@ -127,38 +127,18 @@ public class Enemy : MonoBehaviour,Idamagable
         yield return new WaitForSeconds(time);
         currentHealth -= amount;
     }
+    bool invoked = false;
     private void HealthCondition()
     {
         healthbar.value = Mathf.Lerp(healthbar.value, currentHealth, Time.deltaTime * barspeed);
-        if (healthbar.value <= 0)
+        if (healthbar.value <= 0 && !invoked)
         {
+            invoked = true;
             die();
         }
     }
 
-    //private void StateCheck()
-    //{
-    //    if (playeRef != null)
-    //    {
-    //        distance = Vector3.Distance(transform.position, playeRef.transform.position);
-    //        if (distance > attackdistance)
-    //        {
-    //            ChasePlayer();
-    //        }
-    //        else
-    //        {
-    //            if (!attacking)
-    //            {
-    //                StartCoroutine(Attacking());
-    //            }
-
-    //        }
-    //    }
-    //    else
-    //    {
-
-    //    }
-    //}
+    
     public void ChasePlayer()
     {
         agent.stoppingDistance = stoppingdistanceref;
@@ -188,8 +168,9 @@ public class Enemy : MonoBehaviour,Idamagable
         attacking = false;
 
     }
-    public void die()
+    public virtual void die()
     {
+        
         Movement.instance.GetComponent<Combat>().RemoveEnemiesFromList(this);
         Destroy(this.gameObject, 0.5f);
        
