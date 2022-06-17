@@ -599,7 +599,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &214881906
 Transform:
@@ -840,7 +840,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &350946295
 Transform:
@@ -1771,14 +1771,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perceptionMeter: {fileID: 542032109}
-  meterDecRate: 1.5
+  meterDecRate: 0.5
   percentage: {fileID: 874950808}
-  totalEnemyCount: 0
+  totalEnemyCount: 6
+  currentEnemyCount: 0
   enemiesToSpawn: []
   goblinPrefab: {fileID: 740722919063820502, guid: 18a194359eab2884faf7301e956b175d, type: 3}
-  goblinSpawnDistance: 0
+  goblinSpawnDistance: 10
   goblinSpawnTime: 5
   goblinCount: 0
+  enemyType: 0
 --- !u!114 &944860281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3454,13 +3456,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8398819034069189454}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.810689, y: 5.6587896, z: 5.4726257}
+  m_LocalRotation: {x: -0, y: -0.2959468, z: -0, w: 0.9552045}
+  m_LocalPosition: {x: -2.4742284, y: 5.6587896, z: 4.386617}
   m_LocalScale: {x: 0.5000255, y: 0.5000255, z: 1}
   m_Children: []
   m_Father: {fileID: 593905640526459722}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -34.429, z: 0}
 --- !u!4 &5121026866629838617
 Transform:
   m_ObjectHideFlags: 0
@@ -3693,6 +3695,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5795656783909591792, guid: c33a253c6d46a204f8198c0245f6924d, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795656784041234178, guid: c33a253c6d46a204f8198c0245f6924d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5795656784277814729, guid: c33a253c6d46a204f8198c0245f6924d, type: 3}

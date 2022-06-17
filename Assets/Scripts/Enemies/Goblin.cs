@@ -12,9 +12,11 @@ public class Goblin : Enemy
     }
     public override void die()
     {
+
         base.die();
-        Debug.Log("inc");
-        PerceptionSpawner.instance.IncreasePerMeter(meterincamount);
+        var permeter = PerceptionSpawner.instance;
+        permeter.IncreasePerMeter(meterincamount);
+        permeter.currentEnemyCount--;
 
     }
 }

@@ -82,10 +82,12 @@ public class Combat : MonoBehaviour,Idamagable
     }
     public void AddEnemiesToList(Enemy en)
     {
+        en.healthbar.gameObject.SetActive(true);
         enemiesinRange.Add(en);
     }
     public void RemoveEnemiesFromList(Enemy en)
     {
+        en.healthbar.gameObject.SetActive(false);
         enemiesinRange.Remove(en);
     }
     public void damage(float amount)

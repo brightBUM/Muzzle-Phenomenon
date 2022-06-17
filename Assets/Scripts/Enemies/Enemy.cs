@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour,Idamagable
     [SerializeField] float attackdistance =2f;
     [SerializeField] float distance;
     [SerializeField] Animator anim;
-    [SerializeField] protected Slider healthbar;
+    [SerializeField] public Slider healthbar;
     [SerializeField] protected Combat playeRef;
     //[SerializeField] Rigidbody rb;
     [SerializeField] protected NavMeshAgent agent;
@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour,Idamagable
         stoppingdistanceref = agent.stoppingDistance;
 
         healthbar = GetComponentInChildren<Slider>();
+        healthbar.gameObject.SetActive(false);  
         anim = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
         healthbar.maxValue = maxHealth;
@@ -75,12 +76,16 @@ public class Enemy : MonoBehaviour,Idamagable
     }
     void Patrolling()
     {
+        agent.speed = 2f;
         agent.stoppingDistance = 0f;
         if(playeRef ==null)
         {
-            distance = Vector3.Distance(transform.position, newpoint);
-            if (distance>=0.1f)
+            var mypos = new Vector2(transform.position.x, transform.position.z);
+            var newpointv2 = new Vector2(newpoint.x, newpoint.z);
+            distance = Vector3.Distance(mypos, newpointv2);
+            if (distance>=0.3f)
             {
+                Debug.Log("called");
                 agent.SetDestination(newpoint);
             }
             else
@@ -134,13 +139,14 @@ public class Enemy : MonoBehaviour,Idamagable
         if (healthbar.value <= 0 && !invoked)
         {
             invoked = true;
-            die();
+            die();  
         }
     }
 
     
     public void ChasePlayer()
     {
+        agent.speed = enemySpeed;
         agent.stoppingDistance = stoppingdistanceref;
         if(playeRef!=null)
         {

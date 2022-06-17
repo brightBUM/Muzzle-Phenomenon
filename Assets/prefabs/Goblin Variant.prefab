@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: attackdistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1996231088, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
+      propertyPath: patrolDistance
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4237522186577170563, guid: 3b668478bf145cb45930da38d76b1deb, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
