@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -83,7 +84,10 @@ public class PerceptionSpawner : MonoBehaviour
     {
         percentage.text = perceptionMeter.value.ToString(".##") + "%";
         perceptionMeter.value -= Time.deltaTime * meterDecRate;
-        
+        if(perceptionMeter.value<=0)
+        {
+            SceneManager.LoadScene("Maze0");
+        }
     }
     IEnumerator SpawnFrequency(float time,EnemeyTypes enemytype)
     {

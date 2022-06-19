@@ -6,7 +6,7 @@ public class Goblin : Enemy
 {
     [Header("Goblin stats")]
     [SerializeField] float meterincamount = 5f;
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
     }

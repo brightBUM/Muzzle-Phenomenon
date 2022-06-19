@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour,Idamagable
     float stoppingdistanceref;
     public bool attacking = false;
   
-    public virtual void Start()
+    protected virtual void Start()
     {
         startpoint = transform.position;
         newpoint = GetNewPoint();
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour,Idamagable
 
         }
     }
-    void Patrolling()
+    protected virtual void Patrolling()
     {
         agent.speed = 2f;
         agent.stoppingDistance = 0f;
@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour,Idamagable
     }
 
     
-    public void ChasePlayer()
+    protected virtual void ChasePlayer()
     {
         agent.speed = enemySpeed;
         agent.stoppingDistance = stoppingdistanceref;
